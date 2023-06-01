@@ -1,17 +1,10 @@
 #!/usr/bin/python3
-"""
-0x00. AirBnB clone - The console
-Place module
-"""
+""" Place Module for HBNB project """
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """
-    Defines attributes/methods for the Place class, subclass of BaseModel
-    Other attributes/methods are inherited from BaseModel
-    """
-
+    """ A place to stay """
     city_id = ""
     user_id = ""
     name = ""
@@ -23,7 +16,3 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
     amenity_ids = []
-
-    # def __init__(self, *args, **kwargs):
-    #     """initialize variables and methods"""
-    #     super().__init__(self, *args, **kwargs)
