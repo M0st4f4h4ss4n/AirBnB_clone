@@ -1,8 +1,23 @@
 body {
-	margin:0px;
-	padding:0px;
-
+	margin: 0;
+	padding: 0;
 	color: #484848;
 	font-size: 14px;
 	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+head {
+	background-image: url("images/tab-icon.png");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.logo {
+	background-image: url("images/logo.png");
+	background-repeat: no-repeat;
+	background-position: left center;
+	height: 100%;
+	padding-left: 20px;
+	display: inline-block;
+	vertical-align: middle;
 }
