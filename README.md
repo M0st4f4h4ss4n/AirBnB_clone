@@ -1,47 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body {
-      background-color: #f1f1f1;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      color: #333;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-p {
-  color: #555;
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 10px;
-}
-
-pre {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-code {
-  font-family: Consolas, monospace;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.emoji {
-  font-size: 24px;
-  margin-right: 5px;
-}
-  </style>
-</head>
+<html
+ 
 <body>
   <div class="container">
     <h1><span class="emoji">🏠</span> AirBnB Clone</h1>
