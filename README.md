@@ -8,14 +8,11 @@
       margin: 0;
       padding: 20px;
     }
-css
-Copy code
-h1 {
-  color: #333;
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
+    h1 {
+      color: #333;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
 p {
   color: #555;
   font-size: 16px;
@@ -48,9 +45,9 @@ code {
 <body>
   <div class="container">
     <h1><span class="emoji">🏠</span> AirBnB Clone</h1>
-<p>
-  This repository covers Part 1 & Part 2 of an AirBnB Clone project in Python/Flask.
-</p>
+    <p>
+      This repository covers Part 1 & Part 2 of an AirBnB Clone project in Python/Flask.
+    </p>
 
 <p>
   The full-stack project is divided into 7 Parts:
@@ -139,14 +136,25 @@ code {
 <ul>
   <li><strong>Public instance attributes:</strong></li>
   <ul>
-    <li><code>id:</code> string - assign with a UUID when an instance is created.</li>
-    <li><code>created_at:</code> The current datetime when an instance is created.</li>
-    <li><code>updated_at:</code> The current datetime when an instance is created, updated every time you change your object.</li>
+    <li><code>id:</code> string - assign with a UUID when an instance is created: you can use <code>uuid.uuid4()</code> to generate unique id but don’t forget to convert to a string the goal is to have unique id for each BaseModel</li>
+    <li><code>created_at:</code> datetime - assign with the current datetime when an instance is created</li>
+    <li><code>updated_at:</code> datetime - assign with the current datetime when an instance is created and it will be updated every time you change your object</li>
   </ul>
   <li><strong>Public instance methods:</strong></li>
   <ul>
-    <li><code>save(self):</code> updates the public instance with the current datetime.</li>
-    <li><code>to_dict(self):</code> returns a dictionary containing all keys/values of dict of the instance. This method will be the first piece of the serialization/deserialization process to JSON format.</li>
+    <li><code>save(self):</code> updates the public instance attribute <code>updated_at</code> with the current datetime</li>
+    <li><code>to_dict(self):</code> returns a dictionary containing all keys/values of dict of the instance:
+      <ul>
+        <li>by using <code>self.__dict__</code>, only instance attributes set will be returned</li>
+        <li>a key <code>__class__</code> must be added to this dictionary with the class name of the object</li>
+        <li><code>created_at</code> and <code>updated_at</code> must be converted to string object in ISO format:
+          <ul>
+            <li>format: <code>%Y-%m-%dT%H:%M:%S.%f</code> (ex: 2017-06-14T22:31:03.285259)</li>
+            <li>you can use <code>isoformat()</code> of datetime object</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </ul>
 
@@ -159,120 +167,123 @@ code {
 <h4>Operating In Interactive Mode:</h4>
 
 <pre><code>
-  $ ./console.py
-  (hbnb) help
+$ ./console.py
+(hbnb) help
 
-  Documented commands (type help &lt;topic&gt;):
-  ========================================
-  EOF  help  quit
+Documented commands (type help <topic>):
+EOF help quit
 
-  (hbnb)
-  (hbnb)
-  (hbnb) quit
+(hbnb)
+(hbnb)
+(hbnb) quit
 </code></pre>
+
 
 <h4>Operating In Non-Interactive Mode:</h4>
 
 <pre><code>
-  $ echo "help" | ./console.py
-  (hbnb)
+$ echo "help" | ./console.py
+(hbnb)
 
-  Documented commands (type help &lt;topic&gt;):
-  ========================================
-  EOF  help  quit
-  (hbnb)
+Documented commands (type help <topic>):
+EOF help quit
+(hbnb)
 </code></pre>
+
 
 <pre><code>
-  $ cat test_help
-  help
+$ cat test_help
+help
 </code></pre>
+
 
 <pre><code>
-  $ cat test_help | ./console.py
-  (hbnb)
+$ cat test_help | ./console.py
+(hbnb)
 
-  Documented commands (type help &lt;topic&gt;):
-  ========================================
-  EOF  help  quit
-  (hbnb)
+Documented commands (type help <topic>):
+EOF help quit
+(hbnb)
 </code></pre>
+
 
 <h4>Example Usage:</h4>
 
 <pre><code>
-  newMod = BaseModel()
-  # creates an instance of a method
+newMod = BaseModel()
 
-  print(NewMod.id)
-  # prints the UUID
-  # b6a6e15c-c67d-4312-9a75-9d084935e5
+creates an instance of a method
+print(NewMod.id)
 
-  print(NewMod.created_at)
-  # prints the time when the instance was created (ISO format)
-  # '2017-09-28T21:03:54.052298'
+prints the UUID
+b6a6e15c-c67d-4312-9a75-9d084935e5
+print(NewMod.created_at)
 
-  print(NewMod.updated_at)
-  # prints the most recent time that file was updated (ISO format)
-  # '2017-09-28T21:03:54.052302'
+prints the time when the instance was created (ISO format)
+'2017-09-28T21:03:54.052298'
+print(NewMod.updated_at)
+
+prints the most recent time that file was updated (ISO format)
+'2017-09-28T21:03:54.052302'
+
 </code></pre>
 
 <h3>Directory Tree Structure For Phase #1 of HBnB Clone:</h3>
 
 <pre><code>
-  .
-  ├── AUTHORS
-  ├── console.py
-  ├── models
-  │   ├── amenity.py
-  │   ├── base_model.py
-  │   ├── city.py
-  │   ├── engine
-  │   │   ├── file_storage.py
-  │   │   ├── __init__.py
-  │   │   └── __pycache__
-  │   │       ├── file_storage.cpython-34.pyc
-  │   │       └── __init__.cpython-34.pyc
-  │   ├── __init__.py
-  │   ├── place.py
-  │   ├── __pycache__
-  │   │   ├── amenity.cpython-34.pyc
-  │   │   ├── base_model.cpython-34.pyc
-  │   │   ├── city.cpython-34.pyc
-  │   │   ├── __init__.cpython-34.pyc
-  │   │   ├── place.cpython-34.pyc
-  │   │   ├── review.cpython-34.pyc
-  │   │   ├── state.cpython-34.pyc
-  │   │   └── user.cpython-34.pyc
-  │   ├── review.py
-  │   ├── state.py
-  │   └── user.py
-  ├── README.md
-  └── tests
-      └── test_models
-          ├── __init__.py
-          ├── __pycache__
-          │   ├── __init__.cpython-34.pyc
-          │   ├── test_amenity.cpython-34.pyc
-          │   ├── test_base_model.cpython-34.pyc
-          │   ├── test_city.cpython-34.pyc
-          │   ├── test_place.cpython-34.pyc
-          │   ├── test_review.cpython-34.pyc
-          │   ├── test_state.cpython-34.pyc
-          │   └── test_user.cpython-34.pyc
-          ├── test_amenity.py
-          ├── test_base_model.py
-          ├── test_city.py
-          ├── test_engine
-          │   ├── __init__.py
-          │   ├── __pycache__
-          │   │   ├── __init__.cpython-34.pyc
-          │   │   └── test_file_storage.cpython-34.pyc
-          │   └── test_file_storage.py
-          ├── test_place.py
-          ├── test_review.py
-          ├── test_state.py
-          └── test_user.py
+.
+├── AUTHORS
+├── console.py
+├── models
+│ ├── amenity.py
+│ ├── base_model.py
+│ ├── city.py
+│ ├── engine
+│ │ ├── file_storage.py
+│ │ ├── init.py
+│ │ └── pycache
+│ │ ├── file_storage.cpython-34.pyc
+│ │ └── init.cpython-34.pyc
+│ ├── init.py
+│ ├── place.py
+│ ├── pycache
+│ │ ├── amenity.cpython-34.pyc
+│ │ ├── base_model.cpython-34.pyc
+│ │ ├── city.cpython-34.pyc
+│ │ ├── init.cpython-34.pyc
+│ │ ├── place.cpython-34.pyc
+│ │ ├── review.cpython-34.pyc
+│ │ ├── state.cpython-34.pyc
+│ │ └── user.cpython-34.pyc
+│ ├── review.py
+│ ├── state.py
+│ └── user.py
+├── README.md
+└── tests
+└── test_models
+├── init.py
+├── pycache
+│ ├── init.cpython-34.pyc
+│ ├── test_amenity.cpython-34.pyc
+│ ├── test_base_model.cpython-34.pyc
+│ ├── test_city.cpython-34.pyc
+│ ├── test_place.cpython-34.pyc
+│ ├── test_review.cpython-34.pyc
+│ ├── test_state.cpython-34.pyc
+│ └── test_user.cpython-34.pyc
+├── test_amenity.py
+├── test_base_model.py
+├── test_city.py
+├── test_engine
+│ ├── init.py
+│ ├── pycache
+│ │ ├── init.cpython-34.pyc
+│ │ └── test_file_storage.cpython-34.pyc
+│ └── test_file_storage.py
+├── test_place.py
+├── test_review.py
+├── test_state.py
+└── test_user.py
 </code></pre>
 
 <h2><span class="emoji">⚙️</span> Tasks</h2>
